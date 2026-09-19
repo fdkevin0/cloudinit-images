@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2404:current
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Build Debian 13 cloud image
+          no_output_timeout: 30m
+          command: |
+            sudo env LIBGUESTFS_BACKEND=direct bash -e scripts/build_debian-13.sh
+            qemu-img check -f qcow2 debian-13-genericcloud-amd64-fdkevin-cn.qcow2
+      - store_artifacts:
+          path: debian-13-genericcloud-amd64-fdkevin-cn.qcow2
+
+workflows:
+  build-image:
+    jobs:
+      - build
