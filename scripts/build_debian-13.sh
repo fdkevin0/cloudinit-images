@@ -1,4 +1,5 @@
-sudo apt-get update && sudo apt-get install -y libguestfs-tools axel qemu-utils
+# libguestfs 1.52 needs dhclient in its appliance for DHCP and DNS.
+sudo apt-get update && sudo apt-get install -y libguestfs-tools isc-dhcp-client axel qemu-utils
 
 axel -n 8 -o debian-13-genericcloud-amd64-fdkevin-src.qcow2 https://cdimage.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-amd64.qcow2
 
