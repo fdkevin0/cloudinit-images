@@ -26,6 +26,7 @@ virt-customize -a debian-13-genericcloud-amd64-fdkevin-src.qcow2 \
   --truncate "/etc/apt/mirrors/debian-security.list" \
   --append-line "/etc/apt/mirrors/debian-security.list:https://mirrors.ustc.edu.cn/debian-security" \
   --append-line "/etc/apt/mirrors/debian-security.list:https://mirrors.tuna.tsinghua.edu.cn/debian-security" \
-  --run-command "cloud-init clean --logs --machine-id --seed"
+  --run-command "cloud-init clean --logs --machine-id --seed" \
+  --truncate "/etc/machine-id"
 
 virt-sparsify --compress debian-13-genericcloud-amd64-fdkevin-src.qcow2 debian-13-genericcloud-amd64-fdkevin-cn.qcow2
