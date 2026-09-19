@@ -9,11 +9,13 @@ All image customization lives in [scripts/build_debian-13.sh](scripts/build_debi
 - Configure USTC and Tsinghua APT mirror lists and disable their regeneration by cloud-init.
 - Clean cloud-init state, machine ID, logs and APT caches, then compress the QCOW2 image.
 
-## CircleCI
+## GitHub Actions
 
-Connect this repository to CircleCI using [.circleci/config.yml](.circleci/config.yml). The `build-image` workflow runs the script on an Ubuntu 24.04 VM, checks QCOW2 integrity, and uploads the finished image to the job's **Artifacts** tab:
+Push to `main` to trigger [the workflow](.github/workflows/build.yml). The workflow runs on Ubuntu 24.04, checks QCOW2 integrity, and uploads the finished image to **Actions → workflow run → Artifacts**:
 
 `debian-13-genericcloud-amd64-fdkevin-cn.qcow2`
+
+To build manually, push the workflow to the default branch, then select **Actions → Build cloud image → Run workflow**, or run `gh workflow run build.yml --ref main`.
 
 ## Local build
 
