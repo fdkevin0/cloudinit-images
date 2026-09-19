@@ -19,4 +19,5 @@ jobs:
 workflows:
   build-image:
     jobs:
-      - build
+      - build:
+          filters: pipeline.git.tag matches /^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[0-9]+)?$/
