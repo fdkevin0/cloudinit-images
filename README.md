@@ -22,7 +22,7 @@ To build manually, push the workflow to the default branch, then select **Action
 From the repository root on an x86_64 Ubuntu / Debian Linux host:
 
 ```sh
-sudo env LIBGUESTFS_BACKEND=direct bash -e scripts/build_debian-13.sh
+env LIBGUESTFS_BACKEND=direct bash -e scripts/build_debian-13.sh
 ```
 
 The script installs its build dependencies and writes both the source and finished images to the current directory. On macOS, use a Linux VM.

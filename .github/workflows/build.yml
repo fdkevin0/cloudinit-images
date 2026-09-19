@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build Debian 13 cloud image
         run: |
-          sudo env LIBGUESTFS_BACKEND=direct bash -e scripts/build_debian-13.sh
+          env LIBGUESTFS_BACKEND=direct bash -e scripts/build_debian-13.sh
           qemu-img check -f qcow2 debian-13-genericcloud-amd64-fdkevin-cn.qcow2
       - name: Upload cloud image
         uses: actions/upload-artifact@v7
